@@ -1,0 +1,15 @@
+Test dosyalarini jest otomatik olarak anliyor:
+    - button.test.js 
+    - button.spec.js
+    - __tests__ diye bir klasor acarak icindeki butun js dosyalarinin test oldugunu anlar.
+
+
+Testlerin neleri test ettigini analiz icin; 'yarn test --coverage' kullanabiliriz.
+
+Query'ler 
+
+getBy... = eger bulunmazsa hata firlatir - 1 tane bulursa elementi doner - 1 den fazla bulursa hata firlatir
+queryBy... = eger bulunmazsa hata firlatmaz null doner - 1 tane bulursa elementi doner - 1 den fazla bulursa hata firlatir
+findBy... = eger bulunmazsa hata firlatir - 1 tane bulursa elementi doner - 1 den fazla bulursa hata firlatir *Async islemler yapabilir
+
+bir de getAllBy, queryAllBy, findAllBy vardir. Coklu element bulmak icin. 

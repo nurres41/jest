@@ -1,10 +1,20 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+
+function TestComponent() {
+  return(
+    <>
+      <button>Test</button>
+      <button>Test2</button>
+    </>
+  )
+}
 
 it("should render app component without crashing", () => {
-  render(<App />) // Arrange
-  const element = screen.getByText("Modern Testing") // Assertion
-  expect(element).toBeInTheDocument();
+  render(<TestComponent />) // Arrange
+  const element = screen.getByRole('button', {
+    name: 'Test2'
+  })
+  expect(element).toBeInTheDocument(); // Assertion
 })
 
 
