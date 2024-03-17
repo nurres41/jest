@@ -492,6 +492,69 @@ it('should be changed name', async () => {
   expect(result.current.name).toBe("Selin")
 })
 
+// Hayali bir database islemi
+class DatabaseClient {
+  constructor() {
+    this.users = []
+  }
+
+  initialize() {
+    this.users = [
+      { id: 1, name: 'John'},
+      { id: 2, name: 'Jane'}
+    ]
+  }
+
+  getUsers() {
+    return this.users
+  }
+
+  getUser(id) {
+    return this.users.find((user) => user.id === id)
+  }
+
+  deleteUser(id) {
+    return this.users.filter((user) => user.id !== id)
+  }
+  
+  reset() {
+    return this.users = []
+  }
+}
+
+describe("Database Client", () => {
+  
+  let dbClient;
+
+  beforeEach(() => {
+    dbClient = new DatabaseClient();
+    dbClient.initialize();
+  })
+  it('should be initalize with two users', () => {
+    const users = dbClient.getUsers();
+
+    expect(users.length).toBe(2);
+    expect(users).toMatchObject([
+      { id: 1, name: 'John'},
+      { id: 2, name: 'Jane'}
+    ])
+  });
+  it('should be delete user', () => {
+    const users = dbClient.deleteUser(1);
+
+    expect(users.length).toBe(1);
+    expect(users).toMatchObject([
+      { id: 2, name: 'Jane'}
+    ])
+  });
+  it('should be get a user', () => {
+    const users = dbClient.getUser(1);
+
+    expect(users).toMatchObject(
+      { id: 1, name: 'John'},
+    )
+  });
+})
 
 // timeout da verebiliriz. Sanirim default 5s. Bu zamani belirleyebiliriz. Sureyi gecerse failed olur.
 // it, test yerine yazilabilirnir.
