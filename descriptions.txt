@@ -64,3 +64,8 @@ Ayni sekilde user.deselectOptions ile de select edilmis bir selecti deselect yap
 
 await user.type(inputElement, 'Nuri') ile belirlenen input icine text girilebilinir.
 
+// Mouse ve keyboard event icin shortcutlar
+
+click(), dblClick(), tripleClick(), hover(), unHover(), tab()
+
+

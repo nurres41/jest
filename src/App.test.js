@@ -1,4 +1,4 @@
-import { findByText, render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import React from 'react';
 
@@ -425,6 +425,29 @@ it('should be type into the input', async () => {
 
   expect(inputElement.value).toBe('Nuri')
 })
+
+// shortCut for some events 
+
+function TestTwentyOne() {
+  return (
+    <div>
+      <button onClick={() => console.log('Clicked')}>Click Here</button>
+    </div>
+  )
+}
+
+it('should be click the button', async () => {
+  // console.log takip ediyoruz
+  const consoleSpy = jest.spyOn(console, 'log')
+
+  render(<TestTwentyOne />)
+  const button = screen.getByRole('button')
+
+  fireEvent.click(button)
+  // console.log test et calisip calismadigini
+  expect(consoleSpy).toHaveBeenCalledWith('Clicked')
+})
+
 
 
 // timeout da verebiliriz. Sanirim default 5s. Bu zamani belirleyebiliriz. Sureyi gecerse failed olur.
