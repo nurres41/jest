@@ -73,3 +73,17 @@ click(), dblClick(), tripleClick(), hover(), unHover(), tab()
 - Custom hook yazdigimiz zaman "const { result } = renderHook(useCustom)" gibi kullanim gerekiyor
 - result.current.return edilen deger ile state veya func. ulasabiliriz.
 -Eger bir state degisecek veya fetch gibi bir islem olacaksa da act(() => {}) kullanmak gerekiyor.
+ 
+// Dependency Injection 
+
+-> Ornegin bir <App /> componentinin testini yazacagiz. Icinde ise baska componentler var. Dolayisiyla o componentlerden 
+side Effectler ve istekler olur. Bunun icin Dependency Injection kullanmaliyiz.
+Cunku bir component testi yaparken icindeki componentler onemli degildir. O componentlerin kendi icinde testi olmalidir.
+
+
+// husky and lint-staged
+
+-> Bir test yazdigimizda diger testleri bozabilme olanagi olabilir. Dolayisiyla bunu commitlemeden once husky pre-commit ile butun testleri calistirir.
+Bu sayede istenmeyen olaylarin onune gecilir. Bir sey bozulursa commit gerceklesmez.
+
+-> lint-staged ise sadece stage olmus degisiklerde bunu yapar. Bu da daha performansli ve hizli bir islem olmasini saglar.

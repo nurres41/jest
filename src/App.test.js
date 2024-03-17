@@ -2,6 +2,7 @@ import { act, fireEvent, render, renderHook, screen, waitFor, waitForElementToBe
 import userEvent from '@testing-library/user-event'
 import React from 'react';
 import { customRender } from './test-utils';
+import App from './App';
 
 
 // role ile element bulma
@@ -550,6 +551,13 @@ describe("Database Client", () => {
       { id: 1, name: 'John'},
     )
   });
+})
+
+describe("App render", () => {
+  it('should be works dependecy injection', async () => {
+    render(<App ListingComponent={() => <div data-testid='listing' />} />)
+    expect(screen.getByTestId('listing')).toBeInTheDocument()
+  })
 })
 
 // timeout da verebiliriz. Sanirim default 5s. Bu zamani belirleyebiliriz. Sureyi gecerse failed olur.
