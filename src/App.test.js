@@ -370,9 +370,43 @@ it('should render the element correctly', async () => {
   await user.keyboard('[enter]')
 
   const inputElement = screen.getByRole('textbox')
+  inputElement.focus()
+
+  await user.paste()
   
+  expect(inputElement).toHaveValue('Heey')
 })
 
+// clear input value
+
+function TestNineteen() {
+  return (
+    <div>
+      <select multiple>
+        <option value='elma'>Elma</option>
+        <option value='armuut'>Armut</option>
+        <option value='ayva'>Ayva</option>
+      </select>
+    </div>
+  )
+}
+
+it('should be clear input', async () => {
+  const user = userEvent.setup()
+  render(<TestNineteen />)
+
+  const fruits = screen.getByRole('listbox')
+
+  await user.selectOptions(fruits, ['Elma', 'armuut'])
+
+  expect(screen.getByRole('option',{ name: 'Elma'}).selected).toBe(true)
+  expect(screen.getByRole('option',{ name: 'Armut'}).selected).toBe(true)
+  expect(screen.getByRole('option',{ name: 'Ayva'}).selected).toBe(false)
+
+  await user.deselectOptions(fruits, ['armuut'])
+
+  expect(screen.getByRole("option", { name: 'Armut'}).selected).toBe(false)
+})
 
 // timeout da verebiliriz. Sanirim default 5s. Bu zamani belirleyebiliriz. Sureyi gecerse failed olur.
 // it, test yerine yazilabilirnir.

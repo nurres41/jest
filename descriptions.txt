@@ -44,3 +44,17 @@ pointer('[/MouseLeft]') release the left mouse button gibi ornekler verebiliriz.
 ya da 
 
 pointer({ keys: '[MouseLeft][MouseRight]'}) ikisine de basar.
+
+copy(), paste() ve cut() kullanirken await kullan.
+
+input icini silmek icin clear() kullan
+
+<select> icin role listbox
+<option> icin role option
+
+.selected ile kontrol edebiliriz. value veya Texti { name: '...' } icinde kullanabiliriz.
+
+user.selectOptions(list, { '' veya multiple ise ['','']}) gibi secim yapabiliriz.
+
+Ayni sekilde user.deselectOptions ile de select edilmis bir selecti deselect yapabiliriz.
+
