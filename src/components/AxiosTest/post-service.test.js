@@ -1,15 +1,18 @@
 import postService from "./post-service"
-import axios from 'axios'
 import { MOCK_POSTS } from '../mocks';
 
-jest.mock('axios')
+// axios olmadan fetch calistirmak icin spyOn ile windowa gidip calistirmak gerekiyor.
+const fetch = jest.spyOn(window, 'fetch')
 
-describe('axios test', () => {
+describe('fetch test', () => {
     it('should be render axios data', async () => {
-        const mockResponse = {
-            data: MOCK_POSTS
-        }
-        axios.get.mockResolvedValue(mockResponse)
+        fetch.mockResolvedValue({
+            json: () => {
+                return Promise.resolve({
+                    data: MOCK_POSTS
+                })
+            }
+        })
 
         const result = await postService.getPosts()
 
