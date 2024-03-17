@@ -13,3 +13,34 @@ queryBy... = eger bulunmazsa hata firlatmaz null doner - 1 tane bulursa elementi
 findBy... = eger bulunmazsa hata firlatir - 1 tane bulursa elementi doner - 1 den fazla bulursa hata firlatir *Async islemler yapabilir
 
 bir de getAllBy, queryAllBy, findAllBy vardir. Coklu element bulmak icin. 
+
+** Bir elementin yoklugunu kontrol etmek icin queryBy kullaniyoruz.
+** Bir elementin varligini kontrol etmek icin de getBy kullanabiliriz.
+** Async islemler icin ise findBy kullanmaliyiz. 1000ms bekler ve sonuca gore return eder.
+
+Ayni sekil async islemler icin waitFor() kullaniyoruz. 
+-> await waitFor(() => {})
+
+Bir elementin asyn olan tabii kaldirildigindan emin olmak icin 'waitForElementToBeRemoved' kullanilir.
+-> waitForElementToBeRemoved helperFunc. herhangi bir assertion almaz.
+
+Nasil console.log ile debug yapiyorsak, test icin de 'screen.debug()' kullanarak doma ulasarak kontrol edebiliriz.
+
+*** Events
+
+* fire-event
+ - Eventlere tek bir evente odaklanacak sekilde firlatir. 
+ - Kullanilmasi onerilmiyor.
+
+* user-event
+ - Kullanici gibi eventler firlatir. Click eventi olunca sadece click almaz hover, focus gibi paralel eventleri de firlatir.
+
+
+setup() kavrami -> User olusturuyoruz sanal olarak aslinda
+
+pointer('[MouseLeft>]') left mouse button press
+pointer('[/MouseLeft]') release the left mouse button gibi ornekler verebiliriz.
+
+ya da 
+
+pointer({ keys: '[MouseLeft][MouseRight]'}) ikisine de basar.
