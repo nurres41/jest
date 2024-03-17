@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
+import { act, fireEvent, render, renderHook, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import React from 'react';
 import { customRender } from './test-utils';
@@ -468,6 +468,29 @@ it('should be work wrapper', async () => {
   expect(true).toBe(true)
 }) 
 
+// Hook testing and act use 
+
+const UseCustomHook = () => {
+  const [name, setName] = React.useState('Nuri')
+
+  const changeName = (newName) => {
+    setName(newName)
+  }
+
+  return {name, changeName}
+}
+
+it('should be changed name', async () => {
+  const { result } = renderHook(UseCustomHook)
+  // result ozel bir variable.
+  // result icinde current altinda return edilen degerlere ulasiriz.
+  expect(result.current.name).toBe('Nuri')
+  // state degisecegi icin act kullanmamiz gerekmektedir
+  await act(() => {
+    result.current.changeName('Selin')
+  })
+  expect(result.current.name).toBe("Selin")
+})
 
 
 // timeout da verebiliriz. Sanirim default 5s. Bu zamani belirleyebiliriz. Sureyi gecerse failed olur.

@@ -68,4 +68,8 @@ await user.type(inputElement, 'Nuri') ile belirlenen input icine text girilebili
 
 click(), dblClick(), tripleClick(), hover(), unHover(), tab()
 
+// Custom Hook ve act kullanimi
 
+- Custom hook yazdigimiz zaman "const { result } = renderHook(useCustom)" gibi kullanim gerekiyor
+- result.current.return edilen deger ile state veya func. ulasabiliriz.
+-Eger bir state degisecek veya fetch gibi bir islem olacaksa da act(() => {}) kullanmak gerekiyor.
