@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import React from 'react';
+import { customRender } from './test-utils';
 
 
 // role ile element bulma
@@ -447,6 +448,25 @@ it('should be click the button', async () => {
   // console.log test et calisip calismadigini
   expect(consoleSpy).toHaveBeenCalledWith('Clicked')
 })
+
+// Custom render and wrapper mentality
+
+function TestTwentyTwo() {
+  return (
+    <div>
+      <p>Modern test</p>
+    </div>
+  )
+}
+
+it('should be work wrapper', async () => {
+  customRender(<TestTwentyTwo />)
+
+  // eslint-disable-next-line testing-library/no-debugging-utils
+  screen.debug()
+
+  expect(true).toBe(true)
+}) 
 
 
 
