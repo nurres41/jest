@@ -408,6 +408,25 @@ it('should be clear input', async () => {
   expect(screen.getByRole("option", { name: 'Armut'}).selected).toBe(false)
 })
 
+// type into the input
+
+function TestTwenty() {
+  return (
+    <input />
+  )
+}
+
+it('should be type into the input', async () => {
+  const user = userEvent.setup()
+  render(<TestTwenty />)
+  const inputElement = screen.getByRole('textbox')
+
+  await user.type(inputElement, 'Nuri')
+
+  expect(inputElement.value).toBe('Nuri')
+})
+
+
 // timeout da verebiliriz. Sanirim default 5s. Bu zamani belirleyebiliriz. Sureyi gecerse failed olur.
 // it, test yerine yazilabilirnir.
 

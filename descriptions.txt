@@ -49,6 +49,8 @@ copy(), paste() ve cut() kullanirken await kullan.
 
 input icini silmek icin clear() kullan
 
+// Select Option 
+
 <select> icin role listbox
 <option> icin role option
 
@@ -57,4 +59,8 @@ input icini silmek icin clear() kullan
 user.selectOptions(list, { '' veya multiple ise ['','']}) gibi secim yapabiliriz.
 
 Ayni sekilde user.deselectOptions ile de select edilmis bir selecti deselect yapabiliriz.
+
+// Input Type
+
+await user.type(inputElement, 'Nuri') ile belirlenen input icine text girilebilinir.
 
