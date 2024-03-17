@@ -1,5 +1,5 @@
 import React from 'react'
-import useFetch from '../hooks/useFetch'
+import {useFetch} from '../hooks/useFetch'
 
 const FetchData = () => {
     const { data, isLoading } = useFetch(
@@ -13,9 +13,11 @@ const FetchData = () => {
   return (
     <div>
       {data.map((post) => (
-        <div key={post.id}>
-            {post.title}
-        </div>
+        <ul>
+          <li key={post.id}>
+              {post.title}
+          </li>
+        </ul>
       ))}
     </div>
   )
