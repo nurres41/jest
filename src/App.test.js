@@ -26,7 +26,7 @@ it("should render app component without crashing", () => {
 function TestTwo(){
   return(
     <>
-      <label for='user-name'>User name:</label>
+      <label htmlFor='user-name'>User name:</label>
       <input id='user-name' />
     </>
   )
@@ -74,9 +74,7 @@ it('should find element by text', () => {
 // value ile element bulmak (Value verilen elementler icin gecerli - input, select, textarea etc.)
 function TestFive(){
   return(
-    <>
-      <input value='modern testing' />
-    </>
+      <input value='modern testing' onChange={() => {}}/>
   )
 }
 
@@ -282,7 +280,6 @@ it('should be have a primary class', () => {
   const { container } = render(<TestFifteen />)
   // for debug
   // eslint-disable-next-line testing-library/no-debugging-utils
-  screen.debug()
   // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
   const element = container.querySelector('.primary')
   expect(element).toBeInTheDocument()
@@ -463,7 +460,6 @@ it('should be work wrapper', async () => {
   customRender(<TestTwentyTwo />)
 
   // eslint-disable-next-line testing-library/no-debugging-utils
-  screen.debug()
 
   expect(true).toBe(true)
 }) 

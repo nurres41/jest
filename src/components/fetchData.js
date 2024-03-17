@@ -13,7 +13,7 @@ const FetchData = () => {
   return (
     <div>
       {data.map((post) => (
-        <ul>
+        <ul key={post.id}>
           <li key={post.id}>
               {post.title}
           </li>

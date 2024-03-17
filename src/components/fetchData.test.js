@@ -19,8 +19,7 @@ jest.mock('../hooks/useFetch', () => {
 describe('Fetch Data', () => {
     it('should be fetch mock data', () => {
         render(<FetchData />)
-        // eslint-disable-next-line testing-library/no-debugging-utils
-        screen.debug()
+
         const listElements = screen.getAllByRole('listitem')
         expect(listElements).toHaveLength(MOCK_POSTS.length)
     })
